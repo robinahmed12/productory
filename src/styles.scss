@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Import Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Import Bootstrap Icons
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+:root {
+  --primary-color: #D64550;    /* Deep Red-Orange */
+  --secondary-color: #FF6B6B;  /* Vibrant Coral */
+  --accent-color: #FFA726;     /* Energetic Orange */
+  --dark-charcoal: #2C2C2C;    /* Warm Charcoal */
+  --white: #FFFFFF;             /* Pure White */
+}

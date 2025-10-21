@@ -1,0 +1,106 @@
+
+  .btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+  }
+
+  .btn-primary:hover {
+    background-color: #c03d47 !important;
+    border-color: #c03d47 !important;
+  }
+
+  .btn-outline-primary {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+  }
+
+  .badge-custom-primary {
+    background-color: #fef2f2;
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .badge-custom-accent {
+    background-color: #fff7ed;
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  .badge-custom-success {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    font-weight: 600;
+  }
+
+  .text-custom-primary {
+    color: var(--primary-color) !important;
+  }
+
+  .text-custom-charcoal {
+    color: var(--dark-charcoal) !important;
+  }
+
+  .product-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+    height: 100%;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(214, 69, 80, 0.1);
+    border-color: var(--primary-color);
+  }
+
+  .product-image {
+    height: 220px;
+    object-fit: cover;
+    background-color: #f9fafb;
+  }
+
+  .price-tag {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--dark-charcoal);
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 2px solid #e5e7eb;
+    background-color: var(--white);
+    color: var(--dark-charcoal);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, #fef2f2 0%, #fff7ed 100%);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .stock-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+  }
+
+  .product-features {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }

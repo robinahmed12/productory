@@ -1,1 +1,236 @@
-<p>product-form works!</p>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-9 col-xl-8">
+      <div class="card form-card">
+        <!-- Form Header -->
+        <div class="form-header">
+          <div class="d-flex align-items-center gap-3">
+            <div class="bg-white bg-opacity-25 rounded-3 p-2">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <div>
+              <h2 class="mb-1 h3 fw-bold">
+                {{ productId ? 'Edit Product' : 'Add New Product' }}
+              </h2>
+              <p class="mb-0 opacity-90">
+                {{ productId ? 'Update product information and features' : 'Create a new product for your catalog' }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Body -->
+        <div class="card-body p-4 p-md-5">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            
+            <!-- Basic Information Section -->
+            <div class="mb-5">
+              <h5 class="mb-3 fw-bold" style="color: var(--dark-charcoal);">Basic Information</h5>
+              
+              <!-- Product Name -->
+              <div class="mb-4">
+                <label for="productName" class="form-label">
+                  Product Name<span class="required-indicator">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productName"
+                  formControlName="productName"
+                  [class.is-invalid]="isFieldInvalid('productName')"
+                  placeholder="e.g., Strategy Planning Tool">
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('productName')">
+                  Product name is required and must be at least 3 characters.
+                </div>
+              </div>
+
+              <!-- Description -->
+              <div class="mb-4">
+                <label for="description" class="form-label">
+                  Description<span class="required-indicator">*</span>
+                </label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  formControlName="description"
+                  [class.is-invalid]="isFieldInvalid('description')"
+                  rows="4"
+                  placeholder="Provide a detailed description of your product..."></textarea>
+                <small class="form-help-text">Minimum 10 characters</small>
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('description')">
+                  Description is required and must be at least 10 characters.
+                </div>
+              </div>
+
+              <!-- Row: Category and Price -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <label for="category" class="form-label">
+                    Category<span class="required-indicator">*</span>
+                  </label>
+                  <select
+                    class="form-select"
+                    id="category"
+                    formControlName="category"
+                    [class.is-invalid]="isFieldInvalid('category')">
+                    <option value="">Select a category</option>
+                    <option value="Planning">Planning</option>
+                    <option value="Development">Development</option>
+                    <option value="Analytics">Analytics</option>
+                    <option value="Collaboration">Collaboration</option>
+                    <option value="Integration">Integration</option>
+                  </select>
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('category')">
+                    Please select a category.
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <label for="price" class="form-label">
+                    Price (USD)<span class="required-indicator">*</span>
+                  </label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-white" style="border-right: none;">$</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="price"
+                      formControlName="price"
+                      [class.is-invalid]="isFieldInvalid('price')"
+                      step="0.01"
+                      min="0"
+                      placeholder="0.00"
+                      style="border-left: none;">
+                  </div>
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('price')">
+                    Valid price is required (minimum $0.01).
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row: Launch Date and Stock Status -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <label for="launchDate" class="form-label">
+                    Launch Date<span class="required-indicator">*</span>
+                  </label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="launchDate"
+                    formControlName="launchDate"
+                    [class.is-invalid]="isFieldInvalid('launchDate')">
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('launchDate')">
+                    Valid launch date is required.
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <label class="form-label d-block">Availability</label>
+                  <div class="form-check form-switch mt-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      role="switch"
+                      id="inStock"
+                      formControlName="inStock"
+                      style="width: 3rem; height: 1.5rem; cursor: pointer;">
+                    <label class="form-check-label ms-2" for="inStock" style="cursor: pointer;">
+                      <strong>In Stock</strong>
+                      <small class="d-block text-muted">Product is available for purchase</small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Media Section -->
+            <div class="mb-5">
+              <h5 class="mb-3 fw-bold" style="color: var(--dark-charcoal);">Product Media</h5>
+              
+              <div class="mb-4">
+                <label for="image" class="form-label">
+                  Image URL<span class="required-indicator">*</span>
+                </label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="image"
+                  formControlName="image"
+                  [class.is-invalid]="isFieldInvalid('image')"
+                  placeholder="https://example.com/product-image.png">
+                <small class="form-help-text">Enter a valid image URL (HTTPS recommended)</small>
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('image')">
+                  Valid image URL is required.
+                </div>
+              </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="mb-5">
+              <h5 class="mb-3 fw-bold" style="color: var(--dark-charcoal);">Product Features</h5>
+              
+              <div class="form-section">
+                <div formArrayName="features">
+                  <div *ngFor="let feature of features.controls; let i = index" class="feature-group mb-3">
+                    <label class="form-label small text-muted mb-2">Feature {{ i + 1 }}</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [formControlName]="i"
+                        [placeholder]="'Describe feature ' + (i + 1)">
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger"
+                        (click)="removeFeature(i)"
+                        [disabled]="features.length <= 1"
+                        title="Remove feature">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                <button
+                  type="button"
+                  class="btn btn-outline-primary w-100"
+                  (click)="addFeature()">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="me-2">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                  Add Another Feature
+                </button>
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-end pt-4 border-top">
+              <button
+                type="button"
+                class="btn btn-outline-secondary order-2 order-sm-1"
+                (click)="onCancel()">
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary order-1 order-sm-2"
+                [disabled]="productForm.invalid">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="me-2">
+                  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                </svg>
+                {{ productId ? 'Update Product' : 'Create Product' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

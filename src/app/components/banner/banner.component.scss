@@ -1,0 +1,59 @@
+.avatar-group {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #fff; /* nice clean border separation */
+  margin-left: -8px; /* overlap effect */
+}
+
+.avatar-md img {
+  width: 28px;   /* smaller than default */
+  height: 28px;
+  object-fit: cover;
+}
+
+ .btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+  }
+
+  .btn-primary:hover {
+    background-color: #c03d47 !important;
+    border-color: #c03d47 !important;
+  }
+
+  .btn-outline-secondary {
+    color: var(--dark-charcoal) !important;
+    border-color: var(--dark-charcoal) !important;
+  }
+
+  .btn-outline-secondary:hover {
+    background-color: var(--dark-charcoal) !important;
+    color: var(--white) !important;
+  }
+
+  .bg-custom-warning {
+    background-color: var(--accent-color) !important;
+  }
+
+  .bg-custom-primary {
+    background-color: var(--primary-color) !important;
+  }
+
+  .bg-custom-secondary {
+    background-color: var(--secondary-color) !important;
+  }
+
+  .text-custom-charcoal {
+    color: var(--dark-charcoal) !important;
+  }
+
+  .badge-accent {
+    background-color: #FFF3E0;
+    color: var(--accent-color);
+  }

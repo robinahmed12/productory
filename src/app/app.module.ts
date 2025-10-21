@@ -7,9 +7,9 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ProductListComponent } from './features/products/product-list/product-list.component';
-import { ProductFormComponent } from './features/products/product-form/product-form.component';
-import { ProductDetailsComponent } from './features/products/product-details/product-details.component';
+import { HttpClientModule } from '@angular/common/http';
+
+import { BannerComponent } from './components/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -18,15 +18,10 @@ import { ProductDetailsComponent } from './features/products/product-details/pro
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ProductListComponent,
-    ProductFormComponent,
-    ProductDetailsComponent
+    BannerComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

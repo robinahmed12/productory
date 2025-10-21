@@ -1,0 +1,28 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProductsService {
+  private dbUrl =
+    'https://productory-fc23a-default-rtdb.firebaseio.com/products.json';
+
+  constructor(private http: HttpClient) {}
+
+  postProductsData(data: any) {
+    return this.http.post(this.dbUrl, data);
+  }
+
+  getProductData() {
+    return this.http.get<{ [key: string]: any }>(this.dbUrl).pipe(
+      map((data) =>
+        Object.entries(data).map(([id, product]) => ({
+          id,
+          ...product,
+        }))
+      )
+    );
+  }
+}
