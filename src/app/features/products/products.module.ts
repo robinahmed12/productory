@@ -7,8 +7,12 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import {  HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, ProductRoutingModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, ProductRoutingModule, HttpClientModule,
+    
+  
+  ],
   exports: [],
   declarations: [
     ProductFormComponent,

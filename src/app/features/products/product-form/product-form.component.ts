@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/core/services/products.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class ProductFormComponent implements OnInit {
     private fb: FormBuilder,
 
     private router: Router,
-    private productService: ProductsService
+    private productService: ProductsService,
+
   ) {
     this.productForm = this.createForm();
   }
@@ -80,25 +82,21 @@ export class ProductFormComponent implements OnInit {
   onSubmit(): void {
     if (this.productForm.valid) {
       const formData = this.productForm.value;
-      console.log(formData);
 
       this.productService.postProductsData(formData).subscribe({
         next: (res) => {
-          console.log(res);
+          console.log(' Product saved:', res);
+       
+          this.productForm.reset(); // optional: reset form
+        },
+        error: (err) => {
+          console.error(' Error saving product:', err);
+          
         },
       });
-
-      // Prepare the product data
-      // const product: Product = {
-      //   productName: formData.productName,
-      //   description: formData.description,
-      //   price: parseFloat(formData.price),
-      //   category: formData.category,
-      //   launchDate: formData.launchDate,
-      //   inStock: formData.inStock,
-      //   image: formData.image,
-      //   features: formData.features.filter((feature: string) => feature.trim() !== '')
-      // };
+    } else {
+      
+      this.productForm.markAllAsTouched();
     }
   }
 

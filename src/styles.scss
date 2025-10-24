@@ -13,3 +13,11 @@
   --dark-charcoal: #2C2C2C;    /* Warm Charcoal */
   --white: #FFFFFF;             /* Pure White */
 }
+
+.main-container {
+  min-height: calc(100vh - 403px);
+}
+
+footer{
+  margin-top: 80px;
+}

@@ -25,4 +25,9 @@ export class ProductsService {
       )
     );
   }
+
+  getProductDetails(id: string) {
+    const productUrl = `https://productory-fc23a-default-rtdb.firebaseio.com/products/${id}.json`;
+    return this.http.get(productUrl);
+  }
 }

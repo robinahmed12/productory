@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.footer {
+  background-color: var(--dark-charcoal) !important;
+  margin-top: auto;
+}
+
+.footer a {
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--secondary-color) !important;
+}
+
+.social-links a {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-color) !important;
+  transform: translateY(-2px);
+}
+
+.footer-brand h4 {
+  font-size: 1.5rem;
+}

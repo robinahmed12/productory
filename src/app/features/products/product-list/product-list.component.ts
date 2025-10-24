@@ -1,6 +1,7 @@
 import { ProductsService } from 'src/app/core/services/products.service';
 import { Product } from './../../../shared/models/product.models';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -9,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
   products: any[] = [];
+id: any;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService , private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.fetchProduct();
@@ -21,6 +23,14 @@ export class ProductListComponent implements OnInit {
       next: (products) => {
         this.products = products;
       },
+      error: (err)=> {
+        console.log(err)
+      }
     });
   }
+
+
+  // onViewDetails(id: any) {
+
+  // }
 }
