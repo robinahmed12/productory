@@ -6,6 +6,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { ManageProductsComponent } from './manage-products/manage-products.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {  HttpClientModule } from '@angular/common/http';
     ProductFormComponent,
     ProductListComponent,
     ProductDetailsComponent,
+    ManageProductsComponent,
   ],
   providers: [],
 })
