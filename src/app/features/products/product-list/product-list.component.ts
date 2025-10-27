@@ -24,21 +24,18 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fetchProduct();
+    this.fetchProducts();
 
-    // Apply category from URL if present
+    // Apply filters from query params on page load
     this.route.queryParams.subscribe((params) => {
-      if (params['category']) {
-        this.selectedCategory = params['category'];
-        this.applyFilter();
-      } else if (!params['category'] && this.selectedCategory) {
-        this.clearFilter(false);
-      }
+      this.selectedCategory = params['category'] || '';
+      this.searchTerm = params['search'] || '';
+      this.sortOption = params['sort'] || '';
+      this.applyFilter();
     });
   }
 
-  // Fetch products
-  fetchProduct() {
+  fetchProducts() {
     this.productsService.getProductData().subscribe({
       next: (products) => {
         this.products = products;
@@ -48,67 +45,83 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  // Filter by category and update URL
-  filterByCategory(category: string) {
-    this.selectedCategory = category;
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { category },
-      queryParamsHandling: 'merge',
-    });
-    this.applyFilter();
-  }
-
-  // Clear category filter
-  clearFilter(updateUrl: boolean = true) {
-    this.selectedCategory = '';
-    if (updateUrl) {
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: { category: null },
-        queryParamsHandling: 'merge',
-      });
-    }
-    this.applyFilter();
-  }
-
-  // Apply category + search filters and then sort
+  // Apply category + search filters, then sort
   applyFilter() {
     this.filteredProducts = this.products.filter((p) => {
-      const matchesCategory = !this.selectedCategory || p.category === this.selectedCategory;
-      const matchesSearch = !this.searchTerm || p.productName.toLowerCase().includes(this.searchTerm.toLowerCase());
+      const matchesCategory =
+        !this.selectedCategory || p.category === this.selectedCategory;
+      const matchesSearch =
+        !this.searchTerm ||
+        p.productName.toLowerCase().includes(this.searchTerm.toLowerCase());
       return matchesCategory && matchesSearch;
     });
-    this.sortProducts();
+
+    this.applySort();
   }
 
-  filterProducts() {
+  // Category filter
+  filterByCategory(category: string) {
+    this.selectedCategory = category;
     this.applyFilter();
+    this.updateQueryParams();
   }
 
-  // Sort products based on selected option
-  sortProducts() {
+  clearCategory() {
+    this.selectedCategory = '';
+    this.applyFilter();
+    this.updateQueryParams();
+  }
+
+  // Search input
+  onSearchChange() {
+    this.applyFilter();
+    this.updateQueryParams();
+  }
+
+  // Sort products
+  applySort() {
     if (!this.sortOption) return;
 
     switch (this.sortOption) {
-      case '1': // Price: Low to High
+      case '1':
         this.filteredProducts.sort((a, b) => a.price - b.price);
         break;
-      case '2': // Price: High to Low
+      case '2':
         this.filteredProducts.sort((a, b) => b.price - a.price);
         break;
-      case '3': // Newest First
+      case '3':
         this.filteredProducts.sort(
-          (a, b) => new Date(b.launchDate).getTime() - new Date(a.launchDate).getTime()
+          (a, b) =>
+            new Date(b.launchDate).getTime() - new Date(a.launchDate).getTime()
         );
         break;
-      case '4': // Name: A-Z
-        this.filteredProducts.sort((a, b) => a.productName.localeCompare(b.productName));
+      case '4':
+        this.filteredProducts.sort((a, b) =>
+          a.productName.localeCompare(b.productName)
+        );
         break;
     }
   }
 
-  // Navigate to product details
+  onSortChange() {
+    this.applySort();
+    this.updateQueryParams();
+  }
+
+  // Update URL query params
+  updateQueryParams() {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        category: this.selectedCategory || null,
+        search: this.searchTerm || null,
+        sort: this.sortOption || null,
+      },
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  // Navigate to product details page
   onViewDetails(product: any) {
     this.router.navigate(['/products/product-details', product.id], {
       queryParams: {
