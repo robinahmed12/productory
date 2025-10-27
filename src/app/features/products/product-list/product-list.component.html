@@ -36,11 +36,24 @@
       >
         <!-- Category Filters -->
         <div class="d-flex flex-wrap gap-2">
-          <button class="filter-btn active">All Products</button>
-          <button class="filter-btn">Analytics</button>
-          <button class="filter-btn">Roadmaps</button>
-          <button class="filter-btn">Collaboration</button>
-          <button class="filter-btn">Planning</button>
+          <button
+            (click)="clearFilter()"
+            class="btn btn-outline-secondary"
+            class="filter-btn active"
+          >
+            All Products
+          </button>
+          <button
+            *ngFor="let cat of categories"
+            class="filter-btn"
+            (click)="filterByCategory(cat)"
+            [ngClass]="{
+              'btn btn-primary me-2': selectedCategory === cat,
+              'btn btn-outline-primary me-2': selectedCategory !== cat
+            }"
+          >
+            {{ cat }}
+          </button>
         </div>
 
         <!-- Search & Sort -->
@@ -50,12 +63,17 @@
               type="text"
               class="form-control"
               placeholder="Search products..."
+              [(ngModel)]="searchTerm"
+            (input)="filterProducts()"
             />
             <button class="btn btn-outline-secondary" type="button">
               <i class="bi bi-search"></i>
             </button>
           </div>
-          <select class="form-select" style="max-width: 150px">
+          <select class="form-select" style="max-width: 150px"
+             [(ngModel)]="sortOption"
+          (change)="sortProducts()"
+          >
             <option selected>Sort by</option>
             <option value="1">Price: Low to High</option>
             <option value="2">Price: High to Low</option>
@@ -70,7 +88,10 @@
   <!-- Products Grid -->
   <div class="row g-4">
     <!-- Product Card Example 1 -->
-    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let product of products">
+    <div
+      class="col-lg-4 col-md-6 col-sm-12"
+      *ngFor="let product of filteredProducts"
+    >
       <div class="card product-card border-0 shadow-sm">
         <div class="position-relative">
           <span
@@ -121,7 +142,7 @@
             </div>
             <div class="d-flex gap-2">
               <button
-               (click)="onViewDetails(product)"
+                (click)="onViewDetails(product)"
                 class="btn btn-outline-primary btn-sm"
               >
                 <i class="bi bi-eye"></i>
