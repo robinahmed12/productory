@@ -1,0 +1,113 @@
+<div class="container my-5" *ngIf="!loading; else loadingTpl">
+  <div class="card shadow-lg border-0 rounded-4 p-4">
+    <h3 class="fw-bold mb-4 text-center" style="color: #d64550">
+      Edit Product
+    </h3>
+
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Product Name</label>
+          <input
+            type="text"
+            formControlName="productName"
+            class="form-control"
+            placeholder="Enter product name"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Category</label>
+          <input
+            type="text"
+            formControlName="category"
+            class="form-control"
+            placeholder="Enter category"
+          />
+        </div>
+
+        <div class="col-12">
+          <label class="form-label fw-semibold">Description</label>
+          <textarea
+            formControlName="description"
+            class="form-control"
+            rows="3"
+            placeholder="Enter description"
+          ></textarea>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Price</label>
+          <input
+            type="number"
+            formControlName="price"
+            class="form-control"
+            placeholder="Enter price"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Launch Date</label>
+          <input
+            type="date"
+            formControlName="launchDate"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Image URL</label>
+          <input
+            type="text"
+            formControlName="image"
+            class="form-control"
+            placeholder="Enter image URL"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold"
+            >Features (comma-separated)</label
+          >
+          <input
+            type="text"
+            formControlName="features"
+            class="form-control"
+            placeholder="Example: Fast, Reliable, Secure"
+          />
+        </div>
+
+        <div class="col-md-6 d-flex align-items-center">
+          <div class="form-check">
+            <input
+              type="checkbox"
+              formControlName="inStock"
+              class="form-check-input"
+              id="inStockCheck"
+            />
+            <label for="inStockCheck" class="form-check-label">In Stock</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex justify-content-end gap-2">
+        <button
+          type="submit"
+          class="btn text-white px-4"
+          [disabled]="productForm.invalid"
+          style="background-color: #d64550"
+        >
+          Update
+        </button>
+        <button type="button" class="btn btn-outline-dark px-4">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="text-center my-5">
+    <div class="spinner-border text-danger" role="status"></div>
+    <p class="mt-3 text-muted">Loading product details...</p>
+  </div>
+</ng-template>

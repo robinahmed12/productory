@@ -5,6 +5,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
+import { EditProductsComponent } from './edit-products/edit-products.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent },
@@ -14,6 +15,9 @@ const routes: Routes = [
     path: 'manage-product',
     component: ManageProductsComponent,
   },
+  {
+    path: 'edit-product/:id', component: EditProductsComponent
+  }
 ];
 
 @NgModule({

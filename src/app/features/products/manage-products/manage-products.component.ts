@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/core/services/products.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { ProductsService } from 'src/app/core/services/products.service';
 export class ManageProductsComponent implements OnInit {
   products: any;
 
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService,
+   private router:Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchProduct();
@@ -24,5 +27,19 @@ export class ManageProductsComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  handleEdit(product: any){
+    
+    this.router.navigate(['/products/edit-product', product.id], {
+      queryParams: {
+        category: product.category,
+        productName: product.productName,
+        price: product.price,
+      },
+      queryParamsHandling: 'merge',
+      replaceUrl: false,
+    });
+
   }
 }

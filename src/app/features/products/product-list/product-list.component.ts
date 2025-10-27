@@ -117,7 +117,7 @@ export class ProductListComponent implements OnInit {
         search: this.searchTerm || null,
         sort: this.sortOption || null,
       },
-      queryParamsHandling: 'merge'
+      queryParamsHandling: 'merge',
     });
   }
 
