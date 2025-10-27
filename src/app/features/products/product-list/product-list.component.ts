@@ -1,7 +1,7 @@
 import { ProductsService } from 'src/app/core/services/products.service';
 import { Product } from './../../../shared/models/product.models';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -10,9 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   products: any[] = [];
-id: any;
+  id: any;
 
-  constructor(private productsService: ProductsService , private route: ActivatedRoute) {}
+  constructor(
+    private productsService: ProductsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchProduct();
@@ -23,14 +27,21 @@ id: any;
       next: (products) => {
         this.products = products;
       },
-      error: (err)=> {
-        console.log(err)
-      }
+      error: (err) => {
+        console.log(err);
+      },
     });
   }
-
-
-  // onViewDetails(id: any) {
-
-  // }
+  onViewDetails(product: any) {
+    this.router.navigate(['/products/product-details', product.id], {
+      queryParams: {
+        category: product.category,
+        productName: product.productName,
+        price: product.price,
+        
+      },
+      queryParamsHandling: 'merge', // optional
+      replaceUrl: false,
+    });
+  }
 }
