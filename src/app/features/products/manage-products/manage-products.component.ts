@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { log } from 'console';
 import { ProductsService } from 'src/app/core/services/products.service';
+import { Product } from 'src/app/shared/models/product.models';
 
 @Component({
   selector: 'app-manage-products',
@@ -8,10 +10,11 @@ import { ProductsService } from 'src/app/core/services/products.service';
   styleUrls: ['./manage-products.component.scss'],
 })
 export class ManageProductsComponent implements OnInit {
-  products: any;
+  products: Product[] = [];
 
-  constructor(private productService: ProductsService,
-   private router:Router
+  constructor(
+    private productService: ProductsService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,8 +32,7 @@ export class ManageProductsComponent implements OnInit {
     });
   }
 
-  handleEdit(product: any){
-    
+  handleEdit(product: Product) {
     this.router.navigate(['/products/edit-product', product.id], {
       queryParams: {
         category: product.category,
@@ -40,18 +42,17 @@ export class ManageProductsComponent implements OnInit {
       queryParamsHandling: 'merge',
       replaceUrl: false,
     });
-
   }
-
-  
   onDeleteProduct(id: string) {
-    const confirmDelete = confirm('Are you sure you want to delete this product?');
+    const confirmDelete = confirm(
+      'Are you sure you want to delete this product?'
+    );
     if (!confirmDelete) return;
 
     this.productService.deleteProduct(id).subscribe({
       next: () => {
         alert('Product deleted successfully!');
-        this.products = this.products.filter((p: { id: string; }) => p.id !== id);
+        this.products = this.products.filter((p) => p.id !== id);
       },
       error: (err) => {
         console.error('Error deleting product:', err);

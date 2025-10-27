@@ -1,44 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Product } from 'src/app/shared/models/product.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private dbUrl =
-    'https://productory-fc23a-default-rtdb.firebaseio.com/products.json';
+  private dbUrl = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient) {}
 
-  postProductsData(data: any) {
-    return this.http.post(this.dbUrl, data);
+  postProductsData(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.dbUrl, product);
   }
 
-  getProductData() {
-    return this.http.get<{ [key: string]: any }>(this.dbUrl).pipe(
-      map((data) =>
-        Object.entries(data).map(([id, product]) => ({
-          id,
-          ...product,
-        }))
-      )
-    );
-  }
+ getProductData(): Observable<Product[]> {
+
+  return this.http.get<Product[]>(this.dbUrl).pipe(
+    map(products => products.map(product => ({ ...product })))
+  );
+}
 
   getProductDetails(id: string) {
-    const productUrl = `https://productory-fc23a-default-rtdb.firebaseio.com/products/${id}.json`;
-    return this.http.get(productUrl);
+    return this.http.get(`${this.dbUrl}/${id}`);
   }
 
-    updateProduct(id: string, updatedData: Partial<Product>) {
-    const productUrl = `https://productory-fc23a-default-rtdb.firebaseio.com/products/${id}.json`;
-    return this.http.patch(productUrl, updatedData);
+  updateProduct(id: string, updatedData: Partial<Product>) {
+    return this.http.put(`${this.dbUrl}/${id}`, updatedData);
   }
 
-   deleteProduct(id: string) {
-    const productUrl = `https://productory-fc23a-default-rtdb.firebaseio.com/products/${id}.json`;
-    return this.http.delete(productUrl);
+  deleteProduct(id: string) {
+    return this.http.delete(`${this.dbUrl}/${id}`);
   }
 }

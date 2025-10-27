@@ -22,7 +22,7 @@ export class EditProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productId = this.route.snapshot.paramMap.get('id')!;
+    this.productId = String(this.route.snapshot.paramMap.get('id'))
     this.initForm();
 
     // Load product data

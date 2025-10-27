@@ -1,0 +1,242 @@
+{
+  "products": [
+    {
+      "productName": "AeroFlow Desk Fan",
+      "category": "Planning",
+      "description": "A compact, powerful desk fan with quiet motor and modern design.",
+      "price": 90,
+      "launchDate": "2022-06-14",
+      "inStock": true,
+      "image": "https://images.unsplash.com/photo-1598300056124-8b9100e4b7b3",
+      "features": [
+        "3 speed settings",
+        "Silent operation",
+        "Energy efficient"
+      ],
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "productName": "LumiX Smart Lamp",
+      "category": "Collaboration",
+      "description": "Voice-controlled lamp with adaptive brightness and app connectivity.",
+      "features": [
+        "WiFi enabled",
+        "Color temperature control",
+        "Smart scheduling"
+      ],
+      "image": "https://images.unsplash.com/photo-1616627985651-8b2ef64a67a1",
+      "price": 89,
+      "launchDate": "2023-02-11",
+      "inStock": true
+    },
+    {
+      "productName": "Zenith Noise-Cancel Headphones",
+      "category": "Collaboration",
+      "description": "Immersive over-ear headphones with active noise cancellation.",
+      "price": 200,
+      "launchDate": "2021-09-30",
+      "inStock": true,
+      "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9",
+      "features": [
+        "Bluetooth 5.3",
+        "30-hour battery",
+        "Touch controls"
+      ],
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "productName": "BrewPro Coffee Maker",
+      "category": "Analytics",
+      "description": "Automatic coffee brewer with temperature precision and bold flavor control.",
+      "features": [
+        "12-cup capacity",
+        "Auto shut-off",
+        "Brew strength selector"
+      ],
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+      "price": 129,
+      "launchDate": "2020-04-18",
+      "inStock": false
+    },
+    {
+      "id": "5",
+      "productName": "PixelView 27” 4K Monitor",
+      "category": "Roadmaps",
+      "description": "Vibrant 4K UHD display with HDR support and ultra-slim bezels.",
+      "features": [
+        "IPS panel",
+        "Adjustable stand",
+        "Eye-care technology"
+      ],
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+      "price": 349,
+      "launchDate": "2023-07-25",
+      "inStock": true
+    },
+    {
+      "id": "6",
+      "productName": "AquaPure Bottle",
+      "category": "Analytics",
+      "description": "Self-cleaning water bottle with built-in UV-C sterilization.",
+      "features": [
+        "500ml capacity",
+        "USB rechargeable",
+        "BPA-free"
+      ],
+      "image": "https://images.unsplash.com/photo-1570792683913-56d04661f96e",
+      "price": 69,
+      "launchDate": "2022-09-10",
+      "inStock": true
+    },
+    {
+      "id": "7",
+      "productName": "Nova Yoga Mat",
+      "category": "Planning",
+      "description": "Eco-friendly yoga mat with extra grip and cushion for daily practice.",
+      "features": [
+        "Non-slip surface",
+        "6mm thick",
+        "Recyclable material"
+      ],
+      "image": "https://images.unsplash.com/photo-1599058917212-d750089bc07a",
+      "price": 39,
+      "launchDate": "2021-01-19",
+      "inStock": true
+    },
+    {
+      "id": "8",
+      "productName": "EchoTime Smartwatch",
+      "category": "Collaboration",
+      "description": "Feature-packed smartwatch for fitness, health, and notifications.",
+      "features": [
+        "Heart rate monitor",
+        "GPS tracking",
+        "Custom watch faces"
+      ],
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+      "price": 199,
+      "launchDate": "2023-03-02",
+      "inStock": false
+    },
+    {
+      "id": "9",
+      "productName": "VitaBlend Blender Pro",
+      "category": "Analytics",
+      "description": "High-speed blender for smoothies, soups, and nut butters.",
+      "features": [
+        "1200W motor",
+        "Dishwasher safe",
+        "Pulse control"
+      ],
+      "image": "https://images.unsplash.com/photo-1613470205022-bb3b1f2edb9a",
+      "price": 179,
+      "launchDate": "2022-11-04",
+      "inStock": true
+    },
+    {
+      "id": "10",
+      "productName": "Terra SoundBar 3000",
+      "category": "Roadmaps",
+      "description": "Powerful soundbar with Dolby Audio and wireless subwoofer.",
+      "features": [
+        "HDMI ARC",
+        "Bluetooth 5.0",
+        "Wall mountable"
+      ],
+      "image": "https://images.unsplash.com/photo-1611284446314-60aaa29f7b70",
+      "price": 229,
+      "launchDate": "2021-12-10",
+      "inStock": true
+    },
+    {
+      "id": "11",
+      "productName": "Orbit Gaming Mouse",
+      "category": "Planning",
+      "description": "Ergonomic RGB gaming mouse with precision optical sensor.",
+      "features": [
+        "Adjustable DPI",
+        "Programmable buttons",
+        "RGB lighting"
+      ],
+      "image": "https://images.unsplash.com/photo-1587202372775-e229f172b58a",
+      "price": 59,
+      "launchDate": "2023-05-15",
+      "inStock": true
+    },
+    {
+      "id": "12",
+      "productName": "Nimbus Drone X",
+      "category": "Roadmaps",
+      "description": "Lightweight drone with 4K camera and 20-minute flight time.",
+      "features": [
+        "GPS return home",
+        "Foldable design",
+        "Stabilized footage"
+      ],
+      "image": "https://images.unsplash.com/photo-1508610048659-a06b669e3321",
+      "price": 499,
+      "launchDate": "2022-08-22",
+      "inStock": false
+    },
+    {
+      "id": "13",
+      "productName": "Glide Electric Scooter",
+      "category": "Collaboration",
+      "description": "Portable e-scooter with powerful motor and long battery life.",
+      "features": [
+        "25km range",
+        "Foldable handlebar",
+        "LED display"
+      ],
+      "image": "https://images.unsplash.com/photo-1627764574681-167e4f4a3d7e",
+      "price": 699,
+      "launchDate": "2023-01-10",
+      "inStock": true
+    },
+    {
+      "id": "14",
+      "productName": "FrostAir Mini Fridge",
+      "category": "Analytics",
+      "description": "Compact mini fridge ideal for bedrooms and offices.",
+      "features": [
+        "Energy efficient",
+        "Silent cooling",
+        "Portable size"
+      ],
+      "image": "https://images.unsplash.com/photo-1606813909397-02b4b1d8a3b0",
+      "price": 119,
+      "launchDate": "2020-10-03",
+      "inStock": true
+    },
+    {
+      "productName": "PureTone Wireless Earbuds",
+      "category": "Collaboration",
+      "description": "Compact earbuds with deep bass, touch controls, and fast charging.",
+      "price": 100,
+      "launchDate": "2024-03-28",
+      "inStock": true,
+      "image": "https://images.unsplash.com/photo-1585386959984-a415522b8572",
+      "features": [
+        "Water resistant",
+        "Noise isolation",
+        "USB-C charging case"
+      ],
+      "id": "15"
+    },
+    {
+      "productName": "Kasimir Foreman",
+      "category": "Collaboration",
+      "description": "Tempora enim dolores",
+      "price": 220,
+      "launchDate": "1980-01-02",
+      "inStock": true,
+      "image": "https://www.gybib.com",
+      "features": [
+        "Omnis sequi quia vol"
+      ],
+      "id": "75b4"
+    }
+  ]
+}
