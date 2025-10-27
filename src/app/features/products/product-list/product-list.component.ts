@@ -11,11 +11,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
+  displayedProducts: Product[] = [];
   categories: string[] = ['Analytics', 'Roadmaps', 'Collaboration', 'Planning'];
 
-  selectedCategory: string = '';
-  searchTerm: string = '';
-  sortOption: string = '';
+  selectedCategory = '';
+  searchTerm = '';
+  sortOption = '';
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalPages = 1;
 
   constructor(
     private productsService: ProductsService,
@@ -26,11 +30,11 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.fetchProducts();
 
-    // Apply filters from query params on page load
     this.route.queryParams.subscribe((params) => {
       this.selectedCategory = params['category'] || '';
       this.searchTerm = params['search'] || '';
       this.sortOption = params['sort'] || '';
+      this.currentPage = +params['page'] || 1;
       this.applyFilter();
     });
   }
@@ -45,40 +49,44 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  // Apply category + search filters, then sort
   applyFilter() {
     this.filteredProducts = this.products.filter((p) => {
-      const matchesCategory =
+      const matchCategory =
         !this.selectedCategory || p.category === this.selectedCategory;
-      const matchesSearch =
+      const matchSearch =
         !this.searchTerm ||
         p.productName.toLowerCase().includes(this.searchTerm.toLowerCase());
-      return matchesCategory && matchesSearch;
+      return matchCategory && matchSearch;
     });
 
     this.applySort();
+
+    this.totalPages = Math.ceil(
+      this.filteredProducts.length / this.itemsPerPage
+    );
+    this.paginateProducts();
   }
 
-  // Category filter
   filterByCategory(category: string) {
     this.selectedCategory = category;
+    this.currentPage = 1;
     this.applyFilter();
     this.updateQueryParams();
   }
 
   clearCategory() {
     this.selectedCategory = '';
+    this.currentPage = 1;
     this.applyFilter();
     this.updateQueryParams();
   }
 
-  // Search input
   onSearchChange() {
+    this.currentPage = 1;
     this.applyFilter();
     this.updateQueryParams();
   }
 
-  // Sort products
   applySort() {
     if (!this.sortOption) return;
 
@@ -104,11 +112,12 @@ export class ProductListComponent implements OnInit {
   }
 
   onSortChange() {
+    this.currentPage = 1;
     this.applySort();
+    this.paginateProducts();
     this.updateQueryParams();
   }
 
-  // Update URL query params
   updateQueryParams() {
     this.router.navigate([], {
       relativeTo: this.route,
@@ -116,13 +125,26 @@ export class ProductListComponent implements OnInit {
         category: this.selectedCategory || null,
         search: this.searchTerm || null,
         sort: this.sortOption || null,
+        page: this.currentPage !== 1 ? this.currentPage : null,
       },
       queryParamsHandling: 'merge',
     });
   }
 
-  // Navigate to product details page
-  onViewDetails(product: any) {
+  paginateProducts() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.displayedProducts = this.filteredProducts.slice(start, end);
+  }
+
+  changePage(page: number) {
+    if (page < 1 || page > this.totalPages) return;
+    this.currentPage = page;
+    this.paginateProducts();
+    this.updateQueryParams();
+  }
+
+  onViewDetails(product: Product) {
     this.router.navigate(['/products/product-details', product.id], {
       queryParams: {
         category: product.category,
@@ -130,7 +152,6 @@ export class ProductListComponent implements OnInit {
         price: product.price,
       },
       queryParamsHandling: 'merge',
-      replaceUrl: false,
     });
   }
 }

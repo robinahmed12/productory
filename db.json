@@ -1,21 +1,6 @@
 {
   "products": [
     {
-      "productName": "AeroFlow Desk Fan",
-      "category": "Planning",
-      "description": "A compact, powerful desk fan with quiet motor and modern design.",
-      "price": 90,
-      "launchDate": "2022-06-14",
-      "inStock": true,
-      "image": "https://images.unsplash.com/photo-1598300056124-8b9100e4b7b3",
-      "features": [
-        "3 speed settings",
-        "Silent operation",
-        "Energy efficient"
-      ],
-      "id": "1"
-    },
-    {
       "id": "2",
       "productName": "LumiX Smart Lamp",
       "category": "Collaboration",
@@ -25,7 +10,7 @@
         "Color temperature control",
         "Smart scheduling"
       ],
-      "image": "https://images.unsplash.com/photo-1616627985651-8b2ef64a67a1",
+      "image": "https://plus.unsplash.com/premium_photo-1668005190411-1042cd38522e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGFtcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600",
       "price": 89,
       "launchDate": "2023-02-11",
       "inStock": true
@@ -37,7 +22,7 @@
       "price": 200,
       "launchDate": "2021-09-30",
       "inStock": true,
-      "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9",
+      "image": "https://images.pexels.com/photos/205926/pexels-photo-205926.jpeg",
       "features": [
         "Bluetooth 5.3",
         "30-hour battery",
@@ -55,7 +40,7 @@
         "Auto shut-off",
         "Brew strength selector"
       ],
-      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+      "image": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg",
       "price": 129,
       "launchDate": "2020-04-18",
       "inStock": false
@@ -70,7 +55,7 @@
         "Adjustable stand",
         "Eye-care technology"
       ],
-      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+      "image": "https://images.pexels.com/photos/1029757/pexels-photo-1029757.jpeg",
       "price": 349,
       "launchDate": "2023-07-25",
       "inStock": true
@@ -85,7 +70,7 @@
         "USB rechargeable",
         "BPA-free"
       ],
-      "image": "https://images.unsplash.com/photo-1570792683913-56d04661f96e",
+      "image": "https://images.pexels.com/photos/8275288/pexels-photo-8275288.jpeg",
       "price": 69,
       "launchDate": "2022-09-10",
       "inStock": true
@@ -100,7 +85,7 @@
         "6mm thick",
         "Recyclable material"
       ],
-      "image": "https://images.unsplash.com/photo-1599058917212-d750089bc07a",
+      "image": "https://images.pexels.com/photos/4325488/pexels-photo-4325488.jpeg",
       "price": 39,
       "launchDate": "2021-01-19",
       "inStock": true
@@ -115,7 +100,7 @@
         "GPS tracking",
         "Custom watch faces"
       ],
-      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+      "image": "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg",
       "price": 199,
       "launchDate": "2023-03-02",
       "inStock": false
@@ -130,7 +115,7 @@
         "Dishwasher safe",
         "Pulse control"
       ],
-      "image": "https://images.unsplash.com/photo-1613470205022-bb3b1f2edb9a",
+      "image": "https://images.pexels.com/photos/4397898/pexels-photo-4397898.jpeg",
       "price": 179,
       "launchDate": "2022-11-04",
       "inStock": true
@@ -145,7 +130,7 @@
         "Bluetooth 5.0",
         "Wall mountable"
       ],
-      "image": "https://images.unsplash.com/photo-1611284446314-60aaa29f7b70",
+      "image": "https://images.pexels.com/photos/3944091/pexels-photo-3944091.jpeg",
       "price": 229,
       "launchDate": "2021-12-10",
       "inStock": true
@@ -160,7 +145,7 @@
         "Programmable buttons",
         "RGB lighting"
       ],
-      "image": "https://images.unsplash.com/photo-1587202372775-e229f172b58a",
+      "image": "https://images.pexels.com/photos/577768/pexels-photo-577768.jpeg",
       "price": 59,
       "launchDate": "2023-05-15",
       "inStock": true
@@ -175,7 +160,7 @@
         "Foldable design",
         "Stabilized footage"
       ],
-      "image": "https://images.unsplash.com/photo-1508610048659-a06b669e3321",
+      "image": "https://images.pexels.com/photos/5745767/pexels-photo-5745767.jpeg",
       "price": 499,
       "launchDate": "2022-08-22",
       "inStock": false
@@ -190,7 +175,7 @@
         "Foldable handlebar",
         "LED display"
       ],
-      "image": "https://images.unsplash.com/photo-1627764574681-167e4f4a3d7e",
+      "image": "https://plus.unsplash.com/premium_photo-1716440381772-face56f5a46b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2Nvb3RlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600",
       "price": 699,
       "launchDate": "2023-01-10",
       "inStock": true
@@ -205,7 +190,7 @@
         "Silent cooling",
         "Portable size"
       ],
-      "image": "https://images.unsplash.com/photo-1606813909397-02b4b1d8a3b0",
+      "image": "https://plus.unsplash.com/premium_photo-1734538271703-d41292ab8296?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWluaSUyMGZyaWRnZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600",
       "price": 119,
       "launchDate": "2020-10-03",
       "inStock": true
@@ -217,7 +202,7 @@
       "price": 100,
       "launchDate": "2024-03-28",
       "inStock": true,
-      "image": "https://images.unsplash.com/photo-1585386959984-a415522b8572",
+      "image": "https://images.pexels.com/photos/7154178/pexels-photo-7154178.jpeg",
       "features": [
         "Water resistant",
         "Noise isolation",
@@ -232,7 +217,7 @@
       "price": 220,
       "launchDate": "1980-01-02",
       "inStock": true,
-      "image": "https://www.gybib.com",
+      "image": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg",
       "features": [
         "Omnis sequi quia vol"
       ],
