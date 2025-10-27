@@ -36,4 +36,9 @@ export class ProductsService {
     const productUrl = `https://productory-fc23a-default-rtdb.firebaseio.com/products/${id}.json`;
     return this.http.patch(productUrl, updatedData);
   }
+
+   deleteProduct(id: string) {
+    const productUrl = `https://productory-fc23a-default-rtdb.firebaseio.com/products/${id}.json`;
+    return this.http.delete(productUrl);
+  }
 }

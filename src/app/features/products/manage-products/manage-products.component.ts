@@ -42,4 +42,20 @@ export class ManageProductsComponent implements OnInit {
     });
 
   }
+
+  
+  onDeleteProduct(id: string) {
+    const confirmDelete = confirm('Are you sure you want to delete this product?');
+    if (!confirmDelete) return;
+
+    this.productService.deleteProduct(id).subscribe({
+      next: () => {
+        alert('Product deleted successfully!');
+        this.products = this.products.filter((p: { id: string; }) => p.id !== id);
+      },
+      error: (err) => {
+        console.error('Error deleting product:', err);
+      },
+    });
+  }
 }
